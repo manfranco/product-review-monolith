@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name="product_review")
+@Table(name="product_reviews")
 public class ProductReview {
 
     @Id
@@ -27,11 +27,11 @@ public class ProductReview {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    @JoinColumn(name = "product_key", referencedColumnName = "id")
     private Product product; // Reference to the product
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_key", referencedColumnName = "id")
     private User user; //reference to the user
 
 

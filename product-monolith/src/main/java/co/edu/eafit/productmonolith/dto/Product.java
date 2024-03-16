@@ -22,7 +22,7 @@ public class Product {
     @Column(name = "id")
     private String id;
 
-    @Column(name = "first_name")
+    @Column(name = "product_name")
     private String productName;
 
     @Column(name = "price")
@@ -30,8 +30,5 @@ public class Product {
 
     @Column(name = "description")
     private String description;
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductReview> reviews;
 
 }

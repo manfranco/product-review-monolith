@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name="User")
+@Table(name="users")
 public class User {
 
     @Id
@@ -34,6 +34,4 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductReview> reviews;
 }
