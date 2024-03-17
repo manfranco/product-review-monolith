@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Product Reviews</title>
+    </head>
+    <body>
+        <h1>Product Reviews</h1>
+        <ul>
+            <!-- Assuming you have a list of product reviews -->
+            <li th:each="review : ${reviews}">
+                <p th:text="${review.description}"></p>
+                <p>Rating: <span th:text="${review.rating}"></span></p>
+                <!-- Add other relevant review details here -->
+            </li>
+        </ul>
+    </body>
+</html>

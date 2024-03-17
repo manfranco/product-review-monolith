@@ -30,4 +30,8 @@ public class ProductReviewService {
         return productReviewRepository.save(productReview);
     }
 
+    public List<ProductReview> getProductReviewsByProductId(String productId) {
+        return productReviewRepository.findByProductId(productId);
+    }
+
 }

@@ -2,14 +2,13 @@ package co.edu.eafit.productmonolith.controller;
 
 import co.edu.eafit.productmonolith.dto.ProductReview;
 import co.edu.eafit.productmonolith.service.ProductReviewService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@RestController
+@Controller
 public class ProductReviewController {
 
     private final ProductReviewService productReviewService;
@@ -18,18 +17,27 @@ public class ProductReviewController {
         this.productReviewService = productReviewService;
     }
 
-    @GetMapping("/product-reviews")
+    @GetMapping("api/product-reviews")
     public List<ProductReview> getAllProductReviews() {
         return productReviewService.getAllProductReviews();
     }
 
-    @GetMapping("/product-reviews/{id}")
+    @GetMapping("api/product-reviews/{id}")
     public ProductReview getProductReviewById(@PathVariable String id) {
         return productReviewService.getProductReviewById(id);
     }
 
-    @PostMapping("/product-reviews")
+    @PostMapping("api/product-reviews")
     public void createProductReview(ProductReview productReview) {
         productReviewService.createProductReview(productReview);
+    }
+
+    @GetMapping("/product-reviews")
+    public String showReviews(Model model, @RequestParam("product-id") String productId) {
+        // Assuming you have a list of reviews
+        List<ProductReview> reviews = productReviewService.getProductReviewsByProductId(productId); // Replace with your logic
+        model.addAttribute("title", "Product Reviews");
+        model.addAttribute("reviews", reviews);
+        return "reviews"; // Thymeleaf will resolve this to the template
     }
 }
