@@ -40,4 +40,13 @@ public class ProductReviewController {
         model.addAttribute("reviews", reviews);
         return "reviews"; // Thymeleaf will resolve this to the template
     }
+
+    @GetMapping("/")
+    public String showAllReviews(Model model) {
+        // Assuming you have a list of reviews
+        List<ProductReview> reviews = productReviewService.getAllProductReviews(); // Replace with your logic
+        model.addAttribute("title", "Product Reviews");
+        model.addAttribute("reviews", reviews);
+        return "reviews"; // Thymeleaf will resolve this to the template
+    }
 }

@@ -8,8 +8,9 @@
         <ul>
             <!-- Assuming you have a list of product reviews -->
             <li th:each="review : ${reviews}">
-                <p th:text="${review.description}"></p>
-                <p>Rating: <span th:text="${review.rating}"></span></p>
+                <h5 th:text="${review.product.getProductName()}"></h5>
+                <p th:text="${review.getDescription()}"></p>
+                <p>Rating: <span th:text="${review.getRating()}"></span></p>
                 <!-- Add other relevant review details here -->
             </li>
         </ul>
